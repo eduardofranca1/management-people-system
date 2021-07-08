@@ -15,7 +15,7 @@ public class PersonService {
     private PersonRepository repository;
 
     public Person findById(Long id) {
-        return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Person dos not found."));
+        return verifyIfExists(id);
     }
 
     public Person findByCpf(String cpf) {
@@ -39,19 +39,27 @@ public class PersonService {
 
         Person personDB  = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Person does not found"));
 
-        BeanUtils.copyProperties(person, personDB, "id", "phones");
-        BeanUtils.copyProperties(person.getPhones(), personDB.getPhones(), "id");
+        BeanUtils.copyProperties(person, personDB, "id", "phone");
+//        BeanUtils.copyProperties(person.getPhones(), personDB.getPhones(), "id");
 
         return repository.save(personDB);
     }
 
     public void delete(Long id) {
 
-        if (!repository.existsById(id)) {
-            throw new ResourceNotFoundException("Person does not found");
-        }
+        verifyIfExists(id);
 
         repository.deleteById(id);
     }
+
+    private Person verifyIfExists(Long id) {
+        return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Person does not found"));
+    }
+
+//    private MessageResponseDTO createMessageResponse(String s, Long id2) {
+//        return MessageResponseDTO.builder()
+//                .message(s + id2)
+//                .build();
+//    }
 
 }

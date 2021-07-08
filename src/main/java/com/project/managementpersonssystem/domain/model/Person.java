@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -30,6 +30,10 @@ public class Person {
     private LocalDate birthday;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Phone> phones;
+    private List<Phone> phones = new ArrayList<>();
+
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "fk_phone")
+//    private Phone phone;
 
 }
