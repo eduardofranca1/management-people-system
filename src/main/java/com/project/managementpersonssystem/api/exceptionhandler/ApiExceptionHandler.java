@@ -1,6 +1,7 @@
 package com.project.managementpersonssystem.api.exceptionhandler;
 
 import com.project.managementpersonssystem.domain.exceptions.BusinessException;
+import com.project.managementpersonssystem.domain.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -59,8 +60,8 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
     }
 
-    @ExceptionHandler(ResourceAccessException.class)
-    public ResponseEntity<Object> handleResource(ResourceAccessException ex, WebRequest request) {
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<Object> handleResource(ResourceNotFoundException ex, WebRequest request) {
         HttpStatus status = HttpStatus.NOT_FOUND;
 
         Problem problem = new Problem();
