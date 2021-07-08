@@ -20,4 +20,5 @@ public class Phone {
 
     @Enumerated(EnumType.STRING)
     private PhoneType type;
+
 }

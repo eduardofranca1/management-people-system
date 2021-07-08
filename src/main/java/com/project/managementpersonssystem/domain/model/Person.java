@@ -31,4 +31,5 @@ public class Person {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Phone> phones;
+
 }
