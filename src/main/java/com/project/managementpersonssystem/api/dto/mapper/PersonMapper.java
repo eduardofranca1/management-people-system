@@ -1,4 +1,4 @@
-package com.project.managementpersonssystem.domain.mapper;
+package com.project.managementpersonssystem.api.dto.mapper;
 
 import com.project.managementpersonssystem.api.dto.PersonDTO;
 import com.project.managementpersonssystem.domain.model.Person;
@@ -25,6 +25,21 @@ public class PersonMapper {
                 .collect(Collectors.toList());
     }
 
+    public Person toModel(PersonDTO person) { return modelMapper.map(person, Person.class); }
+
+//    @Autowired
+//    private ModelMapper modelMapper;
+//
+//    public PersonResponseDTO toResponseDTO(Person person) {
+//        return modelMapper.map(person, PersonResponseDTO.class);
+//    }
+//
+//    public List<PersonResponseDTO> toCollectionDTO(List<Person> persons) {
+//        return persons.stream()
+//                .map(this::toResponseDTO)
+//                .collect(Collectors.toList());
+//    }
+//
 //    public PersonRequestDTO toRequestDTO (Person person) { return modelMapper.map(person, PersonRequestDTO.class); }
 //
 //    public Person fromRequestDTO(PersonRequestDTO person) { return modelMapper.map(person, Person.class); }

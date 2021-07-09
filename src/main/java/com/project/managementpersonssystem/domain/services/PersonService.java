@@ -1,30 +1,52 @@
 package com.project.managementpersonssystem.domain.services;
 
+import com.project.managementpersonssystem.api.dto.MessageResponseDTO;
+import com.project.managementpersonssystem.api.dto.PersonDTO;
 import com.project.managementpersonssystem.domain.exceptions.BusinessException;
 import com.project.managementpersonssystem.domain.exceptions.ResourceNotFoundException;
+import com.project.managementpersonssystem.api.dto.mapper.PersonMapper;
 import com.project.managementpersonssystem.domain.model.Person;
 import com.project.managementpersonssystem.domain.repositories.PersonRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
+@AllArgsConstructor
 public class PersonService {
 
-    @Autowired
-    private PersonRepository repository;
+    private final PersonRepository personRepository;
+    private final PersonMapper personMapper;
 
-    public Person findById(Long id) {
-        return verifyIfExists(id);
+    public List<PersonDTO> listAll() {
+        List<Person> people = personRepository.findAll();
+        return people.stream()
+                .map(personMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
-    public Person findByCpf(String cpf) {
-        return repository.findOptionalByCpf(cpf).orElseThrow(() -> new ResourceNotFoundException("Person cpf does not found"));
+    public PersonDTO findById(Long id) {
+
+        Person person = personRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Person does not found."));
+
+        return personMapper.toDTO(person);
     }
 
-    public Person create(Person person) {
+    public PersonDTO findByCpf(String cpf) {
+        Person person = personRepository.findOptionalByCpf(cpf).orElseThrow(() -> new ResourceNotFoundException("Person cpf does not found"));
 
-        boolean existingCpf = repository.findOptionalByCpf(person.getCpf())
+        return personMapper.toDTO(person);
+    }
+
+    public MessageResponseDTO create(PersonDTO personDTO) {
+
+        Person person = personMapper.toModel(personDTO);
+
+        boolean existingCpf = personRepository.findOptionalByCpf(person.getCpf())
                 .stream()
                 .anyMatch(existingPerson -> !existingPerson.equals(person));
 
@@ -32,34 +54,37 @@ public class PersonService {
             throw new BusinessException("Already have a person with this CPF. Please insert another CPF.");
         }
 
-        return repository.save(person);
+        Person savedPerson = personRepository.save(person);
+
+        return createMessageResponse("Person successfully created with ID ", savedPerson.getId());
     }
 
-    public Person update(Long id, Person person) {
+    public MessageResponseDTO update(Long id, PersonDTO personDTO) {
 
-        Person personDB  = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Person does not found"));
+        Person personDB  = personRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Person does not found"));
 
-        BeanUtils.copyProperties(person, personDB, "id", "phone");
-//        BeanUtils.copyProperties(person.getPhones(), personDB.getPhones(), "id");
+        BeanUtils.copyProperties(personDTO, personDB, "id", "phone");
 
-        return repository.save(personDB);
+        personRepository.save(personDB);
+
+        return createMessageResponse("Person successfully updated with ID " , personDB.getId());
     }
 
     public void delete(Long id) {
 
         verifyIfExists(id);
 
-        repository.deleteById(id);
+        personRepository.deleteById(id);
     }
 
-    private Person verifyIfExists(Long id) {
-        return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Person does not found"));
+    private void verifyIfExists(Long id) {
+        personRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Person does not found"));
     }
 
-//    private MessageResponseDTO createMessageResponse(String s, Long id2) {
-//        return MessageResponseDTO.builder()
-//                .message(s + id2)
-//                .build();
-//    }
+    private MessageResponseDTO createMessageResponse(String s, Long id) {
+        return MessageResponseDTO.builder()
+                .message(s + id)
+                .build();
+    }
 
 }

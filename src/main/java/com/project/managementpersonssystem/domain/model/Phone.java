@@ -1,16 +1,19 @@
 package com.project.managementpersonssystem.domain.model;
 
 import com.project.managementpersonssystem.domain.model.enums.PhoneType;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "tb_phones")
-public class Phone {
+public class Phone implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

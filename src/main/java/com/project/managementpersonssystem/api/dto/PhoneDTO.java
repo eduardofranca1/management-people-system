@@ -1,16 +1,18 @@
 package com.project.managementpersonssystem.api.dto;
 
 import com.project.managementpersonssystem.domain.model.enums.PhoneType;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+@Builder
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PhoneDTO {
 
     private Long id;
@@ -19,6 +21,6 @@ public class PhoneDTO {
     private PhoneType type;
 
     @NotEmpty
-    @Size(min = 13, max = 14)
+    @Size(min = 12, max = 13)
     private String number;
 }

@@ -1,18 +1,21 @@
 package com.project.managementpersonssystem.domain.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "tb_persons")
-public class Person {
+public class Person implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,9 +34,5 @@ public class Person {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Phone> phones = new ArrayList<>();
-
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "fk_phone")
-//    private Phone phone;
 
 }
