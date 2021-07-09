@@ -2,24 +2,43 @@ package com.project.managementpersonssystem.domain.services;
 
 import com.project.managementpersonssystem.api.dto.MessageResponseDTO;
 import com.project.managementpersonssystem.api.dto.PersonDTO;
+import com.project.managementpersonssystem.api.dto.mapper.PersonMapper;
 import com.project.managementpersonssystem.domain.exceptions.BusinessException;
 import com.project.managementpersonssystem.domain.exceptions.ResourceNotFoundException;
-import com.project.managementpersonssystem.api.dto.mapper.PersonMapper;
 import com.project.managementpersonssystem.domain.model.Person;
 import com.project.managementpersonssystem.domain.repositories.PersonRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonService {
 
     private final PersonRepository personRepository;
-    private final PersonMapper personMapper;
+
+    private final PersonMapper personMapper = PersonMapper.INSTANCE;
+
+    public MessageResponseDTO createPerson(PersonDTO personDTO) {
+
+        Person person = personMapper.toModel(personDTO);
+
+        boolean existingCpf = personRepository.findOptionalByCpf(person.getCpf())
+                .stream()
+                .anyMatch(existingPerson -> !existingPerson.equals(person));
+
+        if (existingCpf) {
+            throw new BusinessException("Already have a person with this CPF. Please insert another CPF.");
+        }
+
+        Person savedPerson = personRepository.save(person);
+
+        return createMessageResponse("Person successfully created with ID ", savedPerson.getId());
+    }
 
     public List<PersonDTO> listAll() {
         List<Person> people = personRepository.findAll();
@@ -40,23 +59,6 @@ public class PersonService {
         Person person = personRepository.findOptionalByCpf(cpf).orElseThrow(() -> new ResourceNotFoundException("Person cpf does not found"));
 
         return personMapper.toDTO(person);
-    }
-
-    public MessageResponseDTO create(PersonDTO personDTO) {
-
-        Person person = personMapper.toModel(personDTO);
-
-        boolean existingCpf = personRepository.findOptionalByCpf(person.getCpf())
-                .stream()
-                .anyMatch(existingPerson -> !existingPerson.equals(person));
-
-        if (existingCpf) {
-            throw new BusinessException("Already have a person with this CPF. Please insert another CPF.");
-        }
-
-        Person savedPerson = personRepository.save(person);
-
-        return createMessageResponse("Person successfully created with ID ", savedPerson.getId());
     }
 
     public MessageResponseDTO update(Long id, PersonDTO personDTO) {
@@ -81,9 +83,9 @@ public class PersonService {
         personRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Person does not found"));
     }
 
-    private MessageResponseDTO createMessageResponse(String s, Long id) {
+    private MessageResponseDTO createMessageResponse(String s, Long id2) {
         return MessageResponseDTO.builder()
-                .message(s + id)
+                .message(s + id2)
                 .build();
     }
 

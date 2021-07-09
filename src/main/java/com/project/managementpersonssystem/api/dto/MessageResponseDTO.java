@@ -1,12 +1,10 @@
 package com.project.managementpersonssystem.api.dto;
 
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 @Builder
-@Getter
-@Setter
+@Data
 public class MessageResponseDTO {
 
     private String message;
