@@ -8,7 +8,6 @@ import com.project.managementpersonssystem.domain.exceptions.ResourceNotFoundExc
 import com.project.managementpersonssystem.domain.model.Person;
 import com.project.managementpersonssystem.domain.repositories.PersonRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,13 +62,20 @@ public class PersonService {
 
     public MessageResponseDTO update(Long id, PersonDTO personDTO) {
 
-        Person personDB  = personRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Person does not found"));
+        verifyIfExists(id);
 
-        BeanUtils.copyProperties(personDTO, personDB, "id", "phone");
+        Person updatedPerson = personMapper.toModel(personDTO);
+        Person savedPerson = personRepository.save(updatedPerson);
 
-        personRepository.save(personDB);
+        return createMessageResponse("Person successfully updated with ID ", savedPerson.getId());
 
-        return createMessageResponse("Person successfully updated with ID " , personDB.getId());
+//        Person personDB = personRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Person does not found"));
+//
+//        BeanUtils.copyProperties(personDTO, personDB, "id", "phones");
+//
+//        personRepository.save(personDB);
+//
+//        return createMessageResponse("Person successfully updated with ID " , personDB.getId());
     }
 
     public void delete(Long id) {
@@ -83,9 +89,9 @@ public class PersonService {
         personRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Person does not found"));
     }
 
-    private MessageResponseDTO createMessageResponse(String s, Long id2) {
+    private MessageResponseDTO createMessageResponse(String s, Long id) {
         return MessageResponseDTO.builder()
-                .message(s + id2)
+                .message(s + id)
                 .build();
     }
 
