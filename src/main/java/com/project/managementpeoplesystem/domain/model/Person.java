@@ -35,4 +35,7 @@ public class Person implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Phone> phones = new ArrayList<>();
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
+
 }

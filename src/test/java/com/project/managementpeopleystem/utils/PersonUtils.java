@@ -1,4 +1,4 @@
-package com.project.managementpersonssystem.utils;
+package com.project.managementpeopleystem.utils;
 
 import com.project.managementpeoplesystem.api.dto.PersonDTO;
 import com.project.managementpeoplesystem.domain.model.Person;

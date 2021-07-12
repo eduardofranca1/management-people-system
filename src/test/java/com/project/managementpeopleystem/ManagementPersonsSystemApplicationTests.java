@@ -1,4 +1,4 @@
-package com.project.managementpersonssystem;
+package com.project.managementpeopleystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

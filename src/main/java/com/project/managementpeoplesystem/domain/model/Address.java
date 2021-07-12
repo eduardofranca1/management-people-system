@@ -17,5 +17,17 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String number;
+
+    private String address;
+
+    private String neighborhood;
+
+    private String city;
+
+    private String state;
+
+    @Column(name = "postal_code")
+    private String postalCode;
 
 }

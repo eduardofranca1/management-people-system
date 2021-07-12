@@ -1,4 +1,4 @@
-package com.project.managementpersonssystem.service;
+package com.project.managementpeopleystem.service;
 
 import com.project.managementpeoplesystem.api.dto.MessageResponseDTO;
 import com.project.managementpeoplesystem.api.dto.PersonDTO;
@@ -14,7 +14,7 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.any;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static com.project.managementpersonssystem.utils.PersonUtils.*;
+import static com.project.managementpeopleystem.utils.PersonUtils.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
