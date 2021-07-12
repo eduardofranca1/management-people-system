@@ -37,17 +37,17 @@ Open your preferred IDEA:
 
 You can use  [Insomnia](https://insomnia.rest/) or [Postman](https://www.postman.com/) to check the endpoints
 
-1. First you have to create a new person in the route http://localhost:8080/persons using the method POST
+1. First you have to create a new user in the route http://localhost:8080/persons using the method POST
 
-![create person](https://user-images.githubusercontent.com/18031693/125319921-98a79200-e311-11eb-877c-d7830b58d92a.png)
+![create user](https://user-images.githubusercontent.com/18031693/125319921-98a79200-e311-11eb-877c-d7830b58d92a.png)
 
 2. Feel free to browse other endpoints like:
-    - Find all persons http://localhost:8080/persons
-    - Find person by id http://localhost:8080/persons/{id}
-    - Find person by CPF http://localhost:8080/persons/cpf/{cpf}
-    - Find all person by city http://localhost:8080/persons/city/{city}
-    - Find all person by state http://localhost:8080/persons/state/{state}
-    - Update person by id http://localhost:8080/persons/{id} 
-    - Delete person by id http://localhost:8080/persons/{id}
+    - Find all persons http://localhost:8080/users
+    - Find user by id http://localhost:8080/users/{id}
+    - Find user by CPF http://localhost:8080/users/cpf/{cpf}
+    - Find all user by city http://localhost:8080/users/city/{city}
+    - Find all user by state http://localhost:8080/users/state/{state}
+    - Update user by id http://localhost:8080/users/{id} 
+    - Delete user by id http://localhost:8080/users/{id}
     - Find all address http://localhost:8080/address
    - Find an address by id http://localhost:8080/address/{id}
