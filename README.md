@@ -12,6 +12,7 @@
 - [Spring Validation](https://spring.io/guides/gs/validating-form-input/)
 - [Swagger](https://swagger.io/specification/)
 - [Lombok](https://projectlombok.org/)
+- [MapStruct](https://mapstruct.org/)
 - [MySQL](https://www.mysql.com/)
 
 ## Built with:
@@ -46,4 +47,4 @@ You can use  [Insomnia](https://insomnia.rest/) or [Postman](https://www.postman
     - Update person by id http://localhost:8080/persons/{id} 
     - Delete person by id http://localhost:8080/persons/{id}
     - Find all address http://localhost:8080/address
-   	- Find an address by id http://localhost:8080/address/{id}
+      	- Find an address by id http://localhost:8080/address/{id}
