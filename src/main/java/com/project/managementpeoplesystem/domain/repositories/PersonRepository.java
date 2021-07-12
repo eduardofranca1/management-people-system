@@ -12,7 +12,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 
     Optional<Person> findOptionalByCpf(String cpf);
 
-    List<Person> findAllByAddressCity(String city);
-    List<Person> findAllByAddressState(String state);
+    Optional<Person> findAllByAddressCity(String city);
+    Optional<Person> findAllByAddressState(String state);
 
 }
