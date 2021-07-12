@@ -1,4 +1,4 @@
-package com.project.managementpersonssystem.api.dto;
+package com.project.managementpeoplesystem.api.dto;
 
 import lombok.Builder;
 import lombok.Data;

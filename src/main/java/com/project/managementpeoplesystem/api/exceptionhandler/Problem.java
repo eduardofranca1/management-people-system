@@ -1,4 +1,4 @@
-package com.project.managementpersonssystem.api.exceptionhandler;
+package com.project.managementpeoplesystem.api.exceptionhandler;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ public class Problem {
 
     private Integer status;
     private LocalDateTime dateTime;
-    private String text;
+    private String title;
     private List<Field> fields;
 
     @AllArgsConstructor

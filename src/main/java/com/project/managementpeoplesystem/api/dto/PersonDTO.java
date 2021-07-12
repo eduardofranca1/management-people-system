@@ -1,4 +1,4 @@
-package com.project.managementpersonssystem.api.dto;
+package com.project.managementpeoplesystem.api.dto;
 
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
@@ -18,20 +18,20 @@ public class PersonDTO {
 
     private Long id;
 
-    @NotEmpty
+    @NotEmpty(message = "{firstName.notempty}")
     @Size(min = 2, max = 100)
     private String firstName;
 
-    @NotEmpty
+    @NotEmpty(message = "{lastName.notempty}")
     @Size(min = 2, max = 100)
     private String lastName;
 
-    @NotEmpty
+    @NotEmpty(message = "{cpf.notempty}")
     @CPF
     private String cpf;
 
-    @NotNull
-    private String birthDate;
+    @NotNull(message = "{birthday.notnull}")
+    private String birthday;
 
     @Valid
     @NotEmpty

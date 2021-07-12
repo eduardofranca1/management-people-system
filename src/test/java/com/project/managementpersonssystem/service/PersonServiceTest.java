@@ -1,10 +1,10 @@
 package com.project.managementpersonssystem.service;
 
-import com.project.managementpersonssystem.api.dto.MessageResponseDTO;
-import com.project.managementpersonssystem.api.dto.PersonDTO;
-import com.project.managementpersonssystem.domain.model.Person;
-import com.project.managementpersonssystem.domain.repositories.PersonRepository;
-import com.project.managementpersonssystem.domain.services.PersonService;
+import com.project.managementpeoplesystem.api.dto.MessageResponseDTO;
+import com.project.managementpeoplesystem.api.dto.PersonDTO;
+import com.project.managementpeoplesystem.domain.model.Person;
+import com.project.managementpeoplesystem.domain.repositories.PersonRepository;
+import com.project.managementpeoplesystem.domain.services.PersonService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

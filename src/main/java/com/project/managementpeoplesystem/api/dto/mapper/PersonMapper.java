@@ -1,7 +1,7 @@
-package com.project.managementpersonssystem.api.dto.mapper;
+package com.project.managementpeoplesystem.api.dto.mapper;
 
-import com.project.managementpersonssystem.api.dto.PersonDTO;
-import com.project.managementpersonssystem.domain.model.Person;
+import com.project.managementpeoplesystem.api.dto.PersonDTO;
+import com.project.managementpeoplesystem.domain.model.Person;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -11,7 +11,7 @@ public interface PersonMapper {
 
     PersonMapper INSTANCE = Mappers.getMapper(PersonMapper.class);
 
-    @Mapping(target = "birthDate", source = "birthDate", dateFormat = "dd-MM-yyyy")
+    @Mapping(target = "birthday", source = "birthday", dateFormat = "dd-MM-yyyy")
     Person toModel(PersonDTO dto);
 
     PersonDTO toDTO(Person dto);

@@ -1,4 +1,4 @@
-package com.project.managementpersonssystem.domain.model.enums;
+package com.project.managementpeoplesystem.domain.model.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

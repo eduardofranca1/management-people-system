@@ -1,8 +1,8 @@
 package com.project.managementpersonssystem.utils;
 
-import com.project.managementpersonssystem.api.dto.PhoneDTO;
-import com.project.managementpersonssystem.domain.model.Phone;
-import com.project.managementpersonssystem.domain.model.enums.PhoneType;
+import com.project.managementpeoplesystem.api.dto.PhoneDTO;
+import com.project.managementpeoplesystem.domain.model.Phone;
+import com.project.managementpeoplesystem.domain.model.enums.PhoneType;
 
 public class PhoneUtils {
 

@@ -1,12 +1,12 @@
-package com.project.managementpersonssystem.domain.services;
+package com.project.managementpeoplesystem.domain.services;
 
-import com.project.managementpersonssystem.api.dto.MessageResponseDTO;
-import com.project.managementpersonssystem.api.dto.PersonDTO;
-import com.project.managementpersonssystem.api.dto.mapper.PersonMapper;
-import com.project.managementpersonssystem.domain.exceptions.BusinessException;
-import com.project.managementpersonssystem.domain.exceptions.ResourceNotFoundException;
-import com.project.managementpersonssystem.domain.model.Person;
-import com.project.managementpersonssystem.domain.repositories.PersonRepository;
+import com.project.managementpeoplesystem.api.dto.PersonDTO;
+import com.project.managementpeoplesystem.domain.exceptions.ResourceNotFoundException;
+import com.project.managementpeoplesystem.domain.model.Person;
+import com.project.managementpeoplesystem.api.dto.MessageResponseDTO;
+import com.project.managementpeoplesystem.api.dto.mapper.PersonMapper;
+import com.project.managementpeoplesystem.domain.exceptions.BusinessException;
+import com.project.managementpeoplesystem.domain.repositories.PersonRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

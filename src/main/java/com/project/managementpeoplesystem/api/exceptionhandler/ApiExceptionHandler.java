@@ -1,7 +1,7 @@
-package com.project.managementpersonssystem.api.exceptionhandler;
+package com.project.managementpeoplesystem.api.exceptionhandler;
 
-import com.project.managementpersonssystem.domain.exceptions.BusinessException;
-import com.project.managementpersonssystem.domain.exceptions.ResourceNotFoundException;
+import com.project.managementpeoplesystem.domain.exceptions.BusinessException;
+import com.project.managementpeoplesystem.domain.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,10 +43,28 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         Problem problem = new Problem();
         problem.setStatus(status.value());
         problem.setDateTime(LocalDateTime.now());
-        problem.setText("One or more fields are invalids, Fill the fields again");
+        problem.setTitle("One or more fields are invalids, Fill the fields again");
         problem.setFields(fields);
 
         return handleExceptionInternal(ex, problem, headers, status, request);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    protected ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException ex, WebRequest request) {
+
+        List<Problem.Field> fields = new ArrayList<>();
+
+        for (ConstraintViolation error : ex.getConstraintViolations()) {
+            fields.add(new Problem.Field(error.getPropertyPath().toString(), error.getMessage()));
+        }
+
+        Problem problem = new Problem();
+        problem.setStatus(HttpStatus.BAD_REQUEST.value());
+        problem.setDateTime(LocalDateTime.now());
+        problem.setTitle("One or more fields are invalids. Fill the fields again");
+        problem.setFields(fields);
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(problem);
     }
 
     @ExceptionHandler(BusinessException.class)
@@ -54,7 +74,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         Problem problem = new Problem();
         problem.setStatus(status.value());
         problem.setDateTime(LocalDateTime.now());
-        problem.setText(ex.getMessage());
+        problem.setTitle(ex.getMessage());
 
         return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
     }
@@ -66,7 +86,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         Problem problem = new Problem();
         problem.setStatus(status.value());
         problem.setDateTime(LocalDateTime.now());
-        problem.setText(ex.getMessage());
+        problem.setTitle(ex.getMessage());
 
         return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
     }

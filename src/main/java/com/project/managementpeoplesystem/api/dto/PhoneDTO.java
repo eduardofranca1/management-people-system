@@ -1,6 +1,6 @@
-package com.project.managementpersonssystem.api.dto;
+package com.project.managementpeoplesystem.api.dto;
 
-import com.project.managementpersonssystem.domain.model.enums.PhoneType;
+import com.project.managementpeoplesystem.domain.model.enums.PhoneType;
 import lombok.*;
 
 import javax.persistence.EnumType;
@@ -20,7 +20,7 @@ public class PhoneDTO {
     @Enumerated(EnumType.STRING)
     private PhoneType type;
 
-    @NotEmpty
+    @NotEmpty(message = "{number.notempty}")
     @Size(min = 12, max = 13)
     private String number;
 }

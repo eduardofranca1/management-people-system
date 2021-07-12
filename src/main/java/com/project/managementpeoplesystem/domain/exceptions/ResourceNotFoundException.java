@@ -1,4 +1,4 @@
-package com.project.managementpersonssystem.domain.exceptions;
+package com.project.managementpeoplesystem.domain.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
 

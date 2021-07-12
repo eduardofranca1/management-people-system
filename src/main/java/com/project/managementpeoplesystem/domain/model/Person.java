@@ -1,4 +1,4 @@
-package com.project.managementpersonssystem.domain.model;
+package com.project.managementpeoplesystem.domain.model;
 
 import lombok.*;
 
@@ -30,7 +30,7 @@ public class Person implements Serializable {
     @Column(nullable = false, unique = true)
     private String cpf;
 
-    private LocalDate birthDate;
+    private LocalDate birthday;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Phone> phones = new ArrayList<>();

@@ -1,13 +1,13 @@
-package com.project.managementpersonssystem;
+package com.project.managementpeoplesystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ManagementPersonsSystemApplication {
+public class ManagementPeopleSystemApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ManagementPersonsSystemApplication.class, args);
+        SpringApplication.run(ManagementPeopleSystemApplication.class, args);
     }
 
 }

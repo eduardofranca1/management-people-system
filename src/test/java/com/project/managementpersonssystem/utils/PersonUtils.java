@@ -1,7 +1,7 @@
 package com.project.managementpersonssystem.utils;
 
-import com.project.managementpersonssystem.api.dto.PersonDTO;
-import com.project.managementpersonssystem.domain.model.Person;
+import com.project.managementpeoplesystem.api.dto.PersonDTO;
+import com.project.managementpeoplesystem.domain.model.Person;
 
 import java.time.LocalDate;
 import java.util.Collections;
@@ -19,7 +19,7 @@ public class PersonUtils {
                 .firstName(FIRST_NAME)
                 .lastName(LAST_NAME)
                 .cpf(CPF_NUMBER)
-                .birthDate("04-04-2010")
+                .birthday("04-04-2010")
                 .phones(Collections.singletonList(PhoneUtils.createFakeDTO()))
                 .build();
     }
@@ -30,7 +30,7 @@ public class PersonUtils {
                 .firstName(FIRST_NAME)
                 .lastName(LAST_NAME)
                 .cpf(CPF_NUMBER)
-                .birthDate(BIRTH_DATE)
+                .birthday(BIRTH_DATE)
                 .phones(Collections.singletonList(PhoneUtils.createFakeEntity()))
                 .build();
     }

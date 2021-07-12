@@ -1,6 +1,6 @@
-package com.project.managementpersonssystem.domain.model;
+package com.project.managementpeoplesystem.domain.model;
 
-import com.project.managementpersonssystem.domain.model.enums.PhoneType;
+import com.project.managementpeoplesystem.domain.model.enums.PhoneType;
 import lombok.*;
 
 import javax.persistence.*;
