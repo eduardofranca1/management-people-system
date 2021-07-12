@@ -1,6 +1,6 @@
 # Management People System with Spring Boot
 
-![drawSQL-export-2021-07-12_11_40](https://user-images.githubusercontent.com/18031693/125310637-26cb4a80-e309-11eb-8cda-37dfcf553d7f.png)
+![drawSQL-export-2021-07-12_16_29](https://user-images.githubusercontent.com/18031693/125344948-4f197000-e32e-11eb-88a6-914e92ece416.png)
 
 <p align="center">System created by me for <a href="https://app.becas-santander.com/pt-BR/program/santanderbootcamp">Santander Bootcamp</a></p>
 
