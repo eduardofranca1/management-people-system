@@ -38,6 +38,9 @@ Open your preferred IDEA:
 You can use  [Insomnia](https://insomnia.rest/) or [Postman](https://www.postman.com/) to check the endpoints
 
 1. First you have to create a new person in the route http://localhost:8080/persons using the method POST
+
+![create person](https://user-images.githubusercontent.com/18031693/125319921-98a79200-e311-11eb-877c-d7830b58d92a.png)
+
 2. Feel free to browse other endpoints like:
     - Find all persons http://localhost:8080/persons
     - Find person by id http://localhost:8080/persons/{id}
