@@ -12,7 +12,7 @@ public class PersonUtils {
     private static final String LAST_NAME = "Peleias";
     private static final String CPF_NUMBER = "369.333.878-79";
     private static final long PERSON_ID = 1L;
-    public static final LocalDate BIRTH_DATE = LocalDate.of(2010, 10, 1);
+    public static final LocalDate BIRTHDAY = LocalDate.of(2010, 10, 1);
 
     public static PersonDTO createFakeDTO() {
         return PersonDTO.builder()
@@ -21,6 +21,7 @@ public class PersonUtils {
                 .cpf(CPF_NUMBER)
                 .birthday("04-04-2010")
                 .phones(Collections.singletonList(PhoneUtils.createFakeDTO()))
+                .address(AddressUtils.createFakeDTO())
                 .build();
     }
 
@@ -30,8 +31,9 @@ public class PersonUtils {
                 .firstName(FIRST_NAME)
                 .lastName(LAST_NAME)
                 .cpf(CPF_NUMBER)
-                .birthday(BIRTH_DATE)
+                .birthday(BIRTHDAY)
                 .phones(Collections.singletonList(PhoneUtils.createFakeEntity()))
+                .address(AddressUtils.createFakeEntity())
                 .build();
     }
 }
