@@ -1,4 +1,4 @@
-# Management People System with Spring Boot
+# User Management System with Spring Boot
 
 ![drawSQL-export-2021-07-12_16_29](https://user-images.githubusercontent.com/18031693/125344948-4f197000-e32e-11eb-88a6-914e92ece416.png)
 
