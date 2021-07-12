@@ -4,7 +4,7 @@ import com.project.managementpeoplesystem.api.dto.MessageResponseDTO;
 import com.project.managementpeoplesystem.api.dto.PersonDTO;
 import com.project.managementpeoplesystem.domain.model.Person;
 import com.project.managementpeoplesystem.domain.repositories.PersonRepository;
-import com.project.managementpeoplesystem.domain.services.person.CreatePersonService;
+import com.project.managementpeoplesystem.domain.services.PersonService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,7 +24,7 @@ public class PersonServiceTest {
     private PersonRepository personRepository;
 
     @InjectMocks
-    private CreatePersonService personService;
+    private PersonService personService;
 
     @Test
     void testGivenPersonDTOThenReturnSuccessSavedMessage() {
