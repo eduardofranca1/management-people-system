@@ -2,6 +2,8 @@ package com.project.usermanagementsystem.api.controllers;
 
 import com.project.usermanagementsystem.api.dto.UserDTO;
 import com.project.usermanagementsystem.api.dto.MessageResponseDTO;
+import com.project.usermanagementsystem.domain.model.User;
+import com.project.usermanagementsystem.domain.repositories.UserRepository;
 import com.project.usermanagementsystem.domain.services.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,6 +22,7 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final UserRepository userRepository;
 
     @Operation(summary = "Create new User")
     @PostMapping
@@ -46,12 +49,12 @@ public class UserController {
     @Operation(summary = "List all users by city")
     @GetMapping("/city/{city}")
     @ResponseStatus(HttpStatus.OK)
-    public UserDTO getByCities(@PathVariable String city) { return userService.findByCity(city); }
+    public List<User> getByCities(@PathVariable String city) { return userRepository.findAllByAddressCity(city); }
 
     @Operation(summary = "List all users by state")
     @GetMapping("/state/{state}")
     @ResponseStatus(HttpStatus.OK)
-    public UserDTO getByStates(@PathVariable String state) { return userService.findByState(state); }
+    public List<User> getByStates(@PathVariable String state) { return userRepository.findAllByAddressState(state); }
 
     @Operation(summary = "Update user by id")
     @PutMapping("/{userId}")

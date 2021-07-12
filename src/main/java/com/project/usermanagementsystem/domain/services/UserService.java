@@ -60,18 +60,6 @@ public class UserService {
         return userMapper.toDTO(user);
     }
 
-    public UserDTO findByCity(String city) {
-        User user = userRepository.findAllByAddressCity(city).orElseThrow(() -> new ResourceNotFoundException("City does not found."));
-
-        return userMapper.toDTO(user);
-    }
-
-    public UserDTO findByState(String state) {
-        User user = userRepository.findAllByAddressState(state).orElseThrow(() -> new ResourceNotFoundException("State does not found."));
-
-        return userMapper.toDTO(user);
-    }
-
     public MessageResponseDTO update(Long id, UserDTO userDTO) {
 
         verifyIfExists(id);
