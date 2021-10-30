@@ -2,8 +2,6 @@
 
 ![drawSQL-export-2021-07-12_16_29](https://user-images.githubusercontent.com/18031693/125344948-4f197000-e32e-11eb-88a6-914e92ece416.png)
 
-<p align="center">System created by me for <a href="https://app.becas-santander.com/pt-BR/program/santanderbootcamp">Santander Bootcamp</a></p>
-
 ## Technologies:
 
 - [Java 11](https://docs.oracle.com/en/java/javase/11/)
